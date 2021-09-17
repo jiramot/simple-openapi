@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  kong:
+    image: ghcr.io/jiramot/kong-oauth2-plugin:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./kong/config/config.yml:/tmp/config.yml
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/tmp/config.yml
+      - KONG_PLUGINS=bundled,open-api
+      - KONG_PLUGINSERVER_NAMES=open-api
+      - KONG_PLUGINSERVER_OPEN_API_START_CMD=/usr/local/bin/open-api
+      - KONG_PLUGINSERVER_OPEN_API_QUERY_CMD=/usr/local/bin/open-api -dump
+      - KONG_PROXY_LISTEN=0.0.0.0:8000
+      - KONG_LOG_LEVEL=debug
+
+  profile:
+    image: ghcr.io/jiramot/go-profile-resource:latest
