@@ -8,4 +8,4 @@ services:
     plugins:
       - name: open-api
         config:
-          endpoint: "http://192.168.1.114:8081/oauth2/introspect"
+          endpoint: "http://oauth2-admin:8081/oauth2/introspect"

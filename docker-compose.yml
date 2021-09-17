@@ -35,19 +35,19 @@ services:
     volumes:
       - ./ssoweb/nginx/nginx.conf:/etc/nginx/nginx.conf
 
-#  oauth2-admin:
-#    image:
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - REDIS_HOST=redis
-#      - REDIS_PORT=
-#
-#  oauth2-public:
-#    image:
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - REDIS_HOST=redis
-#      - REDIS_PORT=
+  oauth2-admin:
+    image: ghcr.io/jiramot/go-oauth2/admin:latest
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  oauth2-public:
+    image: ghcr.io/jiramot/go-oauth2/public:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
 
