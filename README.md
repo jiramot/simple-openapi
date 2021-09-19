@@ -1,8 +1,8 @@
 # Simple Open API
 
 - [x] [oauth2 server](https://github.com/jiramot/go-oauth2)
-- [x] [login server (idp)](https://github.com/jiramot/oauth2-sso-web)
-- [ ] consent server
+- [x] [login server (idp)](https://github.com/jiramot/express-oauth2-sso-web)
+- [ ] [consent server](https://github.com/jiramot/express-oauth2-sso-web)
 - [ ] resource server
 - [x] [api gateway (kong)](https://github.com/jiramot/kong-oauth2-plugin)
 - [x] [frontend javascript library](https://github.com/jiramot/openapi-frontend-lib)
