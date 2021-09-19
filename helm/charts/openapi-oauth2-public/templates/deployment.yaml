@@ -44,6 +44,14 @@ spec:
             value: {{ .Values.redis.host }}
           - name: REDIS_PORT
             value: "{{ .Values.redis.port }}"
+          volumeMounts:
+          - name: config-volume
+            mountPath: /app/config.yaml
+            subPath: config.yaml
+      volumes:
+        - name: config-volume
+          configMap:
+            name: openapi-oauth2-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

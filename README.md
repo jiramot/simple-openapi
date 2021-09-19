@@ -41,3 +41,17 @@
              │       │  JS SDK  │     │              └──────────┘      └──────────────────┘│
              └───────┴──────────┘     └────────────────────────────────────────────────────┘
 ```
+
+## Run with docker compose
+```
+docker-compose up -d
+```
+
+## Helm
+
+### Develop
+#### Generate helm dependencies (Chart.lock)
+```
+cd helm/charts/openapi-oauth2-admin/
+helm dependency update
+```

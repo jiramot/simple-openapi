@@ -4,6 +4,13 @@ description: A Helm chart for Kubernetes
 
 type: application
 
-version: 0.1.0
+version: 0.1.2
 
 appVersion: "1.16.0"
+
+dependencies:
+  - name: openapi-oauth2-public
+    version: 0.1.2
+    condition: admin.enabled
+    alias: openapi-oauth2-public
+    repository: file://../openapi-oauth2-public
