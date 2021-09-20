@@ -68,7 +68,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-openapi:
-  admin:
-    endpoint: http://openapi-openapi-oauth2-admin

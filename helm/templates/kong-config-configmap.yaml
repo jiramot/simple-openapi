@@ -7,21 +7,21 @@ data:
     _format_version: '2.1'
     services:
       - name: auth
-        url: http://openapi-openapi-oauth2-public/oauth2/auth
+        url: http://{{ .Release.Name }}-openapi-oauth2-public/oauth2/auth
         routes:
           - paths:
               - '/oauth2/auth'
       - name: token
-        url: http://openapi-openapi-oauth2-public/oauth2/token
+        url: http://{{ .Release.Name }}-openapi-oauth2-public/oauth2/token
         routes:
           - paths:
               - '/oauth2/token'
       - name: profile
-        url: http://openapi-openapi-profile-resource
+        url: http://{{ .Release.Name }}-openapi-profile-resource
         routes:
           - paths:
               - '/profile'
         plugins:
           - name: open-api
             config:
-              endpoint: "http://openapi-openapi-oauth2-admin/oauth2/introspect"
+              endpoint: "http://{{ .Release.Name }}-openapi-oauth2-admin/oauth2/introspect"

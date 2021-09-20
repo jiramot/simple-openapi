@@ -40,7 +40,14 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: OAUTH_ADMIN_ENDPOINT
-              value: {{ .Values.openapi.admin.endpoint }}
+              valueFrom:
+                configMapKeyRef:
+                  name: sso-config
+                  key: oauth_admin_endpoint
+      volumes:
+        - name: config
+          configMap:
+            name: sso-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
