@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kong-config
+data:
+  config.yaml: |
+    _format_version: '2.1'
+    services:
+      - name: profile
+        url: http://profile:10000
+        routes:
+          - paths:
+              - '/profile'
+        plugins:
+          - name: open-api
+            config:
+              endpoint: "http://openapi-oauth2-admin/oauth2/introspect"
