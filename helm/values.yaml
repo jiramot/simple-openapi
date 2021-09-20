@@ -1,0 +1,49 @@
+openapi-oauth2-admin:
+  redis:
+    host: 192.168.1.114
+    port: 6379
+
+openapi-oauth2-public:
+  redis:
+    host: 192.168.1.114
+    port: 6379
+
+gateway:
+  enable: true
+  image:
+    repository: ghcr.io/jiramot/kong-oauth2-plugin
+    tag: "0.1.0"
+  ingressController:
+    enabled: false
+    installCRDs: false
+  proxy:
+    enabled: true
+    type: NodePort
+  postgresql:
+    enabled: false
+  deployment:
+    userDefinedVolumeMounts:
+      - name: kong-config-volume
+        mountPath: /tmp/config.yml
+        subPath: config.yaml
+    userDefinedVolumes:
+      - name: kong-config-volume
+        configMap:
+          name: kong-config
+  env:
+    database: "off"
+    nginx_worker_processes: "2"
+    proxy_access_log: /dev/stdout
+    admin_access_log: /dev/stdout
+    admin_gui_access_log: /dev/stdout
+    portal_api_access_log: /dev/stdout
+    proxy_error_log: /dev/stderr
+    admin_error_log: /dev/stderr
+    admin_gui_error_log: /dev/stderr
+    portal_api_error_log: /dev/stderr
+    prefix: /kong_prefix/
+    declarative_config: /tmp/config.yml
+    plugins: bundled,open-api
+    pluginserver_names: open-api
+    pluginserver_open_api_start_cmd: /usr/local/bin/open-api
+    pluginserver_open_api_query_cmd: /usr/local/bin/open-api -dump

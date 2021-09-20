@@ -1,6 +1,0 @@
-dependencies:
-- name: openapi-oauth2-public
-  repository: file://../openapi-oauth2-public
-  version: 0.1.2
-digest: sha256:815b874271afff4b8bbd2567944348dfd46775984a7df886c8d86bd04cd919cd
-generated: "2021-09-19T22:46:36.598239+07:00"

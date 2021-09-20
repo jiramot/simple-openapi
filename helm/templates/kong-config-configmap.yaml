@@ -7,11 +7,11 @@ data:
     _format_version: '2.1'
     services:
       - name: profile
-        url: http://profile:10000
+        url: http://openapi-openapi-profile-resource
         routes:
           - paths:
               - '/profile'
         plugins:
           - name: open-api
             config:
-              endpoint: "http://openapi-oauth2-admin/oauth2/introspect"
+              endpoint: "http://openapi-openapi-oauth2-admin/oauth2/introspect"

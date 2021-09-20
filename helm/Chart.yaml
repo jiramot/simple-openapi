@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "1.0"
+description: A Helm chart for Kubernetes for openapi
+name: openapi
+version: 0.1.2
+
+dependencies:
+  - name: kong
+    repository: "https://charts.konghq.com"
+    condition: kong.enabled
+    version: 2.3.0
+    alias: gateway

@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: 8081
       protocol: TCP
-      name: http
+
   selector:
     {{- include "openapi-oauth2-admin.selectorLabels" . | nindent 4 }}

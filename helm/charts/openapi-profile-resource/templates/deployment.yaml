@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "openapi-oauth2-admin.fullname" . }}
+  name: {{ include "openapi-profile-resource.fullname" . }}
   labels:
-    {{- include "openapi-oauth2-admin.labels" . | nindent 4 }}
+    {{- include "openapi-profile-resource.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "openapi-oauth2-admin.selectorLabels" . | nindent 6 }}
+      {{- include "openapi-profile-resource.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "openapi-oauth2-admin.selectorLabels" . | nindent 8 }}
+        {{- include "openapi-profile-resource.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "openapi-oauth2-admin.serviceAccountName" . }}
+      serviceAccountName: {{ include "openapi-profile-resource.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -34,23 +34,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 8081
+            - containerPort: 10000
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          env:
-          - name: REDIS_HOST
-            value: {{ .Values.redis.host }}
-          - name: REDIS_PORT
-            value: "{{ .Values.redis.port }}"
-          volumeMounts:
-          - name: config-volume
-            mountPath: /app/config.yaml
-            subPath: config.yaml
-      volumes:
-      - name: config-volume
-        configMap:
-          name: openapi-oauth2-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
