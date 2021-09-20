@@ -6,6 +6,16 @@ data:
   config.yaml: |
     _format_version: '2.1'
     services:
+      - name: auth
+        url: http://openapi-openapi-oauth2-public/oauth2/auth
+        routes:
+          - paths:
+              - '/oauth2/auth'
+      - name: token
+        url: http://openapi-openapi-oauth2-public/oauth2/token
+        routes:
+          - paths:
+              - '/oauth2/token'
       - name: profile
         url: http://openapi-openapi-profile-resource
         routes:
