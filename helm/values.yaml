@@ -1,15 +1,12 @@
-openapi-oauth2-admin:
-  redis:
-    host: 192.168.1.114
-    port: 6379
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
 
-openapi-oauth2-public:
-  redis:
-    host: 192.168.1.114
-    port: 6379
 
-gateway:
-  enable: true
+kong:
+  enabled: true
   image:
     repository: ghcr.io/jiramot/kong-oauth2-plugin
     tag: "0.1.0"

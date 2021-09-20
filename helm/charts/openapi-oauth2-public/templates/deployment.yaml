@@ -40,18 +40,27 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-          - name: REDIS_HOST
-            value: {{ .Values.redis.host }}
-          - name: REDIS_PORT
-            value: "{{ .Values.redis.port }}"
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: oauth2-config
+                  key: redis_host
+            - name: REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: oauth2-config
+                  key: redis_port
           volumeMounts:
-          - name: config-volume
-            mountPath: /app/config.yaml
-            subPath: config.yaml
+            - name: config-volume
+              mountPath: /app/config.yaml
+              subPath: config.yaml
       volumes:
         - name: config-volume
           configMap:
             name: openapi-oauth2-config
+        - name: config
+          configMap:
+            name: oauth2-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

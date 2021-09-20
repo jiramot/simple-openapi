@@ -9,4 +9,10 @@ dependencies:
     repository: "https://charts.konghq.com"
     condition: kong.enabled
     version: 2.3.0
-    alias: gateway
+    alias: kong
+
+  - name: redis
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: redis.enabled
+    version: 15.3.2
+    alias: redis

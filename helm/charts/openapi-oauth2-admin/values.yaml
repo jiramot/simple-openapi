@@ -44,10 +44,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-admin:
-  enabled: true
-
-redis:
-  host: 192.168.1.114
-  port: 6379
