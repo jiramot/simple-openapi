@@ -9,3 +9,13 @@ services:
       - name: open-api
         config:
           endpoint: "http://oauth2-admin:8081/oauth2/introspect"
+      - name: cors
+        service: profile
+        config:
+          origins:
+            - "*"
+          methods:
+            - GET
+          credentials: true
+          max_age: 3600
+          preflight_continue: false

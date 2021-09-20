@@ -18,7 +18,7 @@ services:
       - KONG_LOG_LEVEL=debug
 
   profile:
-    image: ghcr.io/jiramot/go-profile-resource:0.1.0
+    image: ghcr.io/jiramot/go-profile-resource:0.1.1
 
   redis:
     image: redis

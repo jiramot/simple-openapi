@@ -25,3 +25,13 @@ data:
           - name: open-api
             config:
               endpoint: "http://{{ .Release.Name }}-openapi-oauth2-admin/oauth2/introspect"
+          - name: cors
+            service: profile
+            config:
+              origins:
+                - "*"
+              methods:
+                - GET
+              credentials: true
+              max_age: 3600
+              preflight_continue: false
