@@ -1,0 +1,30 @@
+apiVersion: v1
+entries:
+  openapi:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2021-09-20T21:33:02.205267+07:00"
+    dependencies:
+    - alias: kong
+      condition: kong.enabled
+      name: kong
+      repository: https://charts.konghq.com
+      version: 2.3.0
+    - alias: redis
+      condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.3.2
+    description: A Helm chart for Kubernetes for openapi
+    digest: 4ffafa951adf8ed47b0ea2d8e4b660e828bd8f43f03d3487f859106eda485b64
+    home: https://github.com/jiramot/simple-openapi
+    maintainers:
+    - email: jiramot@gmail.com
+      name: jiramot
+    name: openapi
+    sources:
+    - https://github.com/jiramot/simple-openapi
+    urls:
+    - https://jiramot.github.io/simple-openapi/openapi-0.1.2.tgz
+    version: 0.1.2
+generated: "2021-09-20T21:33:02.19207+07:00"

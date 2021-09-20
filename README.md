@@ -55,3 +55,12 @@ docker-compose up -d
 cd helm/charts/openapi-oauth2-admin/
 helm dependency update
 ```
+#### Create chart repo
+1. create package
+```
+helm package helm
+```
+2. create index.yaml
+```
+helm repo index --url https://jiramot.github.io/simple-openapi .
+```

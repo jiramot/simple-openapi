@@ -1,6 +1,12 @@
 apiVersion: v2
 appVersion: "1.0"
 description: A Helm chart for Kubernetes for openapi
+home: https://github.com/jiramot/simple-openapi
+sources:
+  - https://github.com/jiramot/simple-openapi
+maintainers:
+  - name: jiramot
+    email: jiramot@gmail.com
 name: openapi
 version: 0.1.2
 
