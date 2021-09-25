@@ -12,5 +12,7 @@ data:
       - client_id: 6789
         client_secret: 12345
         scope: "openid"
-        redirect_url: "http://localhost:9100"
+        redirect_url: "http://localhost:9101"
     login_endpoint: http://localhost:3000/login
+    access_token_duration: 1h
+    access_log_enabled: false

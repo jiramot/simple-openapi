@@ -1,5 +1,15 @@
 _format_version: '2.1'
 services:
+  - name: auth
+    url: http://oauth2-public:8080/oauth2/auth
+    routes:
+      - paths:
+          - '/oauth2/auth'
+  - name: token
+    url: http://oauth2-public:8080/oauth2/token
+    routes:
+      - paths:
+          - '/oauth2/token'
   - name: profile
     url: http://profile:10000
     routes:

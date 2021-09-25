@@ -51,7 +51,7 @@ docker-compose up -d
 ### Install
 ```
 helm repo add openapi https://jiramot.github.io/simple-openapi/
-helm install openapi/openapi --generate-name
+helm install openapi openapi/openapi
 ```
 ### Develop
 #### Generate helm dependencies (Chart.lock)

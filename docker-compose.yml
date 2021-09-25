@@ -18,7 +18,7 @@ services:
       - KONG_LOG_LEVEL=debug
 
   profile:
-    image: ghcr.io/jiramot/go-profile-resource:0.1.1
+    image: ghcr.io/jiramot/go-profile-resource:0.1.2
 
   redis:
     image: redis
@@ -36,7 +36,7 @@ services:
       - OAUTH_ADMIN_ENDPOINT=http://oauth2-admin:8081
 
   oauth2-admin:
-    image: ghcr.io/jiramot/go-oauth2/admin:0.1.2
+    image: ghcr.io/jiramot/go-oauth2/admin:0.1.3
     volumes:
       - ./oauth/config.yaml:/app/config.yaml
     environment:
@@ -44,7 +44,7 @@ services:
       - REDIS_PORT=6379
 
   oauth2-public:
-    image: ghcr.io/jiramot/go-oauth2/public:0.1.2
+    image: ghcr.io/jiramot/go-oauth2/public:0.1.3
     ports:
       - "8080:8080"
     volumes:
