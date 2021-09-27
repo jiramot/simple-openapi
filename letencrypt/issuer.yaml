@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: authz-one-issuer
+spec:
+  acme:
+    email: jiramot@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: authz-one-issuer-account-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx

@@ -15,7 +15,7 @@ kong:
     installCRDs: false
   proxy:
     enabled: true
-    type: NodePort
+    type: ClusterIP
   postgresql:
     enabled: false
   deployment:

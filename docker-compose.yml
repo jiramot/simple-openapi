@@ -36,7 +36,9 @@ services:
       - OAUTH_ADMIN_ENDPOINT=http://oauth2-admin:8081
 
   oauth2-admin:
-    image: ghcr.io/jiramot/go-oauth2/admin:0.1.3
+    image: ghcr.io/jiramot/go-oauth2:0.1.4
+    command:
+      - ./admin
     volumes:
       - ./oauth/config.yaml:/app/config.yaml
     environment:
@@ -44,7 +46,9 @@ services:
       - REDIS_PORT=6379
 
   oauth2-public:
-    image: ghcr.io/jiramot/go-oauth2/public:0.1.3
+    image: ghcr.io/jiramot/go-oauth2:0.1.4
+    command:
+      - ./admin
     ports:
       - "8080:8080"
     volumes:

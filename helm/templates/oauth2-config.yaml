@@ -13,6 +13,6 @@ data:
         client_secret: 12345
         scope: "openid"
         redirect_url: "http://localhost:9101"
-    login_endpoint: http://localhost:3000/login
+    login_endpoint: https://sso.authz.one/login
     access_token_duration: 1h
     access_log_enabled: false
