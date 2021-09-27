@@ -23,3 +23,16 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - sso.authz.one
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-app-authz-one
+  namespace: openapi
+spec:
+  secretName: app-autz-one-certificate
+  issuerRef:
+    name: authz-one-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - app.authz.one

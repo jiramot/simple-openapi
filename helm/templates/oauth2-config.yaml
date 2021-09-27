@@ -8,7 +8,7 @@ data:
       - client_id: 1234
         client_secret: 12345
         scope: "openid profile"
-        redirect_url: "http://localhost:9100"
+        redirect_url: "https://partner.authz.one"
       - client_id: 6789
         client_secret: 12345
         scope: "openid"
