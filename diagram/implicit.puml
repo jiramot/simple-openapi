@@ -1,0 +1,14 @@
+@startuml
+hide footbox
+participant "User" as user
+participant "Client" as client
+participant "Authorization Server" as oauth
+
+autonumber
+client -> oauth: Credential Request to /authorize
+oauth --> user: Redirect to login/authentication prompt
+
+user -> oauth: Authenticate and Consent
+oauth --> client: ID Token
+
+@enduml

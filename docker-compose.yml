@@ -29,7 +29,7 @@ services:
 #      - "9100:80"
     
   ssoweb:
-    image: ghcr.io/jiramot/express-oauth2-sso-web:0.1.0
+    image: ghcr.io/jiramot/express-oauth2-sso-web:0.1.1
     ports:
       - "3000:3000"
     environment:

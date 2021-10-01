@@ -1,0 +1,28 @@
+@startuml
+hide footbox
+participant "Client" as client
+participant "Authorization Server" as oauth
+
+client -> client: Generate **code_verifier**
+note left
+keep code_verifier in client
+end note
+client -> client: Create **code_challenge** from SHA256 and BASE64
+
+autonumber 1
+client -> oauth: **Authorization Code Request to** \n\
+https://www.openapi.com/authorize?response_type=code\n\
+&client_id=${clientID}\n\
+&redirect_url=https://client.example.com/cb\n\
+&state=xyz&code_challenge=**XXXX**&code_challenge_method=**S256**
+...
+autonumber 5
+client -> oauth: **Request user data with Access Token** to\n\
+http://openapi.com/oauth/token?\n\
+grant_type=authorization_code&code=SplxlOBeZQQYbYS6WxSbIA\n\
+&redirect_uri=https://client.example.com/cb&code_verifier=**YYYY***
+
+oauth -> oauth: Verify **code_verifier**\n\
+& **code_challenge**\n\
+* **code_challenge_method**
+@enduml

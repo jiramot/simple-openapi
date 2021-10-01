@@ -1,0 +1,32 @@
+@startuml
+hide footbox
+participant "Client" as client
+participant "Authorization Server" as oauth
+
+client -> client: Random state
+note left
+keep state in client
+end note
+
+autonumber 1
+client -> oauth: Authorization Code Request to \n\
+https://www.openapi.com/authorize?response_type=code\n\
+&client_id=${clientID}\n\
+&redirect_url=https://client.example.com/cb\n\
+&**state=xyz**
+...
+autonumber 4
+oauth --> client: Redirect back to\n\
+https://client.example.com/cb\n\
+?code=SplxlOBeZQQYbYS6WxSbIA\n\
+&**state=xyz**
+
+alt client state == callback state
+autonumber 5
+client -> oauth: Authentication Code + Client ID + Client Secret to \n\
+https://www.openapi.com/oauth/token
+else client state != callback state
+autonumber stop
+client -> client: Reject
+end
+@enduml

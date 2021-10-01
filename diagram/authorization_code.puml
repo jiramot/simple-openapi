@@ -1,0 +1,21 @@
+@startuml
+hide footbox
+participant "User" as user
+participant "Client" as client
+participant "Authorization Server" as oauth
+participant "Resource Owner" as openapi
+
+autonumber
+client -> oauth: Authorization Code Request to /authorize
+oauth --> user: Redirect to login/authentication prompt
+
+user -> oauth: Authenticate and Consent
+oauth --> client: Authentication Code
+
+client -> oauth: Authentication Code + Client ID + Client Secret \nto /oauth/token
+oauth -> oauth: Validate Authentication Code \n+ Client ID + Client Secret
+oauth --> client: ID Token and Access Token
+
+client -> openapi: Request user data with Access Token
+openapi --> client: Response
+@enduml
